@@ -31,7 +31,8 @@ function decode(timeString) {
   return totalMilliseconds;
 }
 
-function encode(milliseconds) {
+function encode(milliseconds, formatOption = []) {
+  if (!Array.isArray(formatOption)) throw new Error('formatOption must be array.');
   if (isNaN(milliseconds) || milliseconds < 0) {
     return NaN;
   }
@@ -49,6 +50,7 @@ function encode(milliseconds) {
   let timeString = '';
 
   for (const unit in timeUnits) {
+    if (unit !== 'ms' && formatOption.includes(unit)) continue;
     const unitValue = timeUnits[unit];
     const unitCount = Math.floor(remainingMilliseconds / unitValue);
     if (unitCount > 0) {

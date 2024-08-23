@@ -12,7 +12,12 @@ console.log(decode('abc')); // NaN
 console.log(encode(-1000)); // NaN
 console.log(decode('0ms')); // 0
 console.log(encode(0)); // '0ms'
+
+// encode(milliseconds, formatOption);
+// The usage of time symbols is restricted by formatOption (The use of 'ms' cannot be restricted).
+console.log(encode(1536003002, ['w'])); // '17d18h40m3s2ms'
+console.log(encode(1536003002, ['w', 's'])); // '17d18h40m3002ms'
 ```
 
-## get Support
+## Get Support
 <a href="https://discord.gg/yKW8wWKCnS"><img src="https://discordapp.com/api/guilds/1005287561582878800/widget.png?style=banner4" alt="Discord Banner"/></a>
